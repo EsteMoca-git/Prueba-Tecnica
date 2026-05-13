@@ -1,0 +1,54 @@
+<div class="form-container">
+  <form class="cliente-form" [formGroup]="clienteForm" (ngSubmit)="guardarCliente()">
+    <h2 class="form-title">
+      @if (clienteSeleccionado) {
+        Editar Cliente
+      } @else {
+        Registrar Cliente
+      }
+    </h2>
+
+    <div class="form-grid">
+      <!-- Aquí van todos los campos del formulario -->
+    </div>
+
+    <button class="btn-save" type="submit">
+      @if (clienteSeleccionado) {
+        Actualizar Cliente
+      } @else {
+        Guardar Cliente
+      }
+    </button>
+  </form>
+
+  <div class="clientes-list">
+    <h3>Lista de Clientes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Identificación</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (cliente of clientes; track cliente._id) {
+          <tr>
+            <td>{{ cliente.identificacion }}</td>
+            <td>{{ cliente.primerNombre }} {{ cliente.primerApellido }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>
+              <button (click)="editarCliente(cliente)" class="btn-edit">Editar</button>
+              <button (click)="eliminarCliente(cliente._id!)" class="btn-delete">Eliminar</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4">No hay clientes registrados</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
