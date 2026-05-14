@@ -7,7 +7,7 @@ import { Cliente } from '../interfaces/models/cliente.interface';
   providedIn: 'root',
 })
 export class ClienteService {
-  
+
   private apiUrl = 'http://localhost:3000/api/clientes';
   private http = inject(HttpClient);
 
