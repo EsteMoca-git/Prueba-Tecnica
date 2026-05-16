@@ -70,7 +70,7 @@ export class ClienteForm implements OnInit {
           this.clienteForm.reset();
           this.cargarClientes();
         },
-        error: () => Swal.fire('Error', 'No se pudo guardar el cliente', 'error'),
+        error: () => Swal.fire('Error', 'No se pudo guardar el cliente o El cliente ya está registrado', 'error'),
       });
     }
   }
